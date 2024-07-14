@@ -7,6 +7,7 @@ using MvcCV.Models.Entity;
 
 namespace MvcCV.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
 
@@ -16,6 +17,11 @@ namespace MvcCV.Controllers
         {
             var degerler = db.TblHakkimda.ToList();
             return View(degerler);
+        }
+        public PartialViewResult SosyalMedya()
+        {
+            var sosyalMedya = db.TblSosyalMedya.Where(x => x.Durum ==true).ToList();
+            return PartialView(sosyalMedya);
         }
         public PartialViewResult Deneyim()
         {
